@@ -31,18 +31,26 @@ public:
 		};
 	};
 
-	const std::string & getColor() const;
-	const std::string & getNameOfPurse() const;
+	std::string & getColor() const;
+	std::string & getNameOfPurse() const;
 
-	Purse(std::string & _nameOfPurse, PurseColor::Enum _PurseColor, double _WeightOfPurse, int _AmountOfPurse);
+	Purse(const std::string & _nameOfPurse, PurseColor::Enum _PurseColor, double _WeightOfPurse, int _AmountOfPurse);
 
-	void AddThing(std::string & _nameOfThing, double _Weight);
+	Purse(const Purse & _purse) = delete; // запрешаем вызов конструкторора копий с помощью оператора "delete".
 
-	int GetThing(std::string & _nameOfThing);
+	Purse& operator = (const Purse & _purse) = delete; // удаленный оператор присвоения, аналогично запрещаем его вызов с помощью "delete".
 
-	double GetWeighOfThing(std::string & _nameOfThing);
+	Purse(Purse && _purse); // конструктор перемещения.
 
-	void CheckContent(std::string & _nameOfThing, double _Weight);
+	Purse & operator = (Purse && _purse); // оператор перемещения.
+
+	void addThing(const std::string & _nameOfThing, double _Weight);
+
+	char getThing(const std::string & _nameOfThing);
+
+	double getWeighOfThing(const std::string & _nameOfThing);
+
+	void hasItem(const std::string & _nameOfThing, double _Weight);
 
 
 /*-----------------------------------------------------------------*/
