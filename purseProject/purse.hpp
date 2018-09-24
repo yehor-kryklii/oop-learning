@@ -6,9 +6,11 @@
 /*****************************************************************************/
 
 #include <string>
+#include <unordered_map>
 
 /*****************************************************************************/
-
+std::pair < std::string, int >
+Item;
 
 class Purse
 {
@@ -17,8 +19,13 @@ class Purse
 
 public:
 
-/*-----------------------------------------------------------------*/
-	
+	struct PurseItem
+	{
+		const std::string nameOfThing;
+
+		double weightOfThing;
+	};
+
 	struct PurseColor
 	{	
 			enum Enum
@@ -31,8 +38,8 @@ public:
 		};
 	};
 
-	std::string & getColor() const;
-	std::string & getNameOfPurse() const;
+	const std::string & getColor() const;
+	const std::string & getNameOfPurse() const;
 
 	Purse(const std::string & _nameOfPurse, PurseColor::Enum _PurseColor, double _WeightOfPurse, int _AmountOfPurse);
 
@@ -46,30 +53,31 @@ public:
 
 	void addThing(const std::string & _nameOfThing, double _Weight);
 
-	char getThing(const std::string & _nameOfThing);
+	std::string getThing(const std::string & _nameOfThing);
 
 	double getWeighOfThing(const std::string & _nameOfThing);
 
-	void hasItem(const std::string & _nameOfThing, double _Weight);
+	void hasItem(const std::string & _nameOfThing);
 
 
-/*-----------------------------------------------------------------*/
+
 
 private:
 
-/*-----------------------------------------------------------------*/
+	std::string nameOfPurse;
 
-	
+	std::unordered_map< std::string, int > mapOfItems;
 
-/*-----------------------------------------------------------------*/
+
 
 };
 
 
-/*****************************************************************************/
+
 
 inline const std::string & Purse::getColor() const
 {
+	
 
 }
 
