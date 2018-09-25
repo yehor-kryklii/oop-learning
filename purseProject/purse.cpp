@@ -5,8 +5,16 @@
 
 /*****************************************************************************/
 
+Purse::Purse(const std::string & _brandOfPurse, PurseColor::Enum _purseColor, double _weightOfPurse, int amountOfPurse)
+{
+	if (_brandOfPurse.empty())
+		throw(std::logic_error(Messages::EmptyBrandName));
 
-// TODO
+		brandOfPurse = _brandOfPurse;
+
+}
+
+
 
 
 /*****************************************************************************/

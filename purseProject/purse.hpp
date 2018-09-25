@@ -9,8 +9,7 @@
 #include <unordered_map>
 
 /*****************************************************************************/
-std::pair < std::string, int >
-Item;
+
 
 class Purse
 {
@@ -38,10 +37,10 @@ public:
 		};
 	};
 
-	const std::string & getColor() const;
-	const std::string & getNameOfPurse() const;
+	PurseColor::Enum & getColor() const;
+	const std::string & getBrandOfPurse() const;
 
-	Purse(const std::string & _nameOfPurse, PurseColor::Enum _PurseColor, double _WeightOfPurse, int _AmountOfPurse);
+	Purse(const std::string & _brandOfPurse, PurseColor::Enum _purseColor, double _weightOfPurse, int _amountOfPurse);
 
 	Purse(const Purse & _purse) = delete; // запрешаем вызов конструкторора копий с помощью оператора "delete".
 
@@ -53,18 +52,24 @@ public:
 
 	void addThing(const std::string & _nameOfThing, double _Weight);
 
-	std::string getThing(const std::string & _nameOfThing);
+	PurseItem getThing(const std::string & _nameOfThing);
 
 	double getWeighOfThing(const std::string & _nameOfThing);
 
-	void hasItem(const std::string & _nameOfThing);
+	int hasItem(const std::string & _nameOfThing);
 
 
 
 
 private:
 
-	std::string nameOfPurse;
+	std::string brandOfPurse;
+
+	PurseColor::Enum purseColor;
+
+	double weightOfPurse;
+
+	int amountOfPurse;
 
 	std::unordered_map< std::string, int > mapOfItems;
 
@@ -73,15 +78,23 @@ private:
 };
 
 
+inline const int & getAmountOfPurse() 
+{
 
+}
 
-inline const std::string & Purse::getColor() const
+inline const double & getWeightOfPurse()
+{
+
+}
+
+inline  Purse::PurseColor::Enum getColor() 
 {
 	
 
 }
 
-inline const std::string & Purse::getNameOfPurse() const
+inline const std::string & Purse::getBrandOfPurse() const
 {
 
 }
