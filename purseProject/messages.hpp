@@ -15,6 +15,9 @@ namespace Messages
     const char * const NotEnoughWeightForItem = "Impossible to put more weight to purse.";
 	const char * const NoSuchItemInPurse = "No such item in purse";
 	const char * const NotEnoughItemsInPurse = "Not enough items of this type stored in purse";
+	const char * const NonPositiveWeightPurse = "Weight of purse must be poitive";
+	const char * const NonPoitiveAmount = "Amount of purse must be positive";
+	
 }
 
 /*****************************************************************************/

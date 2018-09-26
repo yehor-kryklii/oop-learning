@@ -5,12 +5,22 @@
 
 /*****************************************************************************/
 
-Purse::Purse(const std::string & _brandOfPurse, PurseColor::Enum _purseColor, double _weightOfPurse, int amountOfPurse)
+Purse::Purse(const std::string & _brandOfPurse, PurseColor::Enum _purseColor, double _weightOfPurse, int _amountOfPurse)
+	: brandOfPurse(_brandOfPurse),
+	purseColor(_purseColor),
+	weightOfPurse(_weightOfPurse),
+	amountOfPurse(_amountOfPurse)
+
 {
+
 	if (_brandOfPurse.empty())
 		throw(std::logic_error(Messages::EmptyBrandName));
 
-		brandOfPurse = _brandOfPurse;
+	if (_weightOfPurse <= 0)
+		throw(std::logic_error(Messages::NonPositiveWeightPurse));
+
+	if (_amountOfPurse <= 0)
+		throw(std::logic_error(Messages::NonPoitiveAmount));
 
 }
 
