@@ -25,7 +25,7 @@ public:
 		double weightOfThing;
 	};
 
-	struct PurseColor
+	struct purseColor
 	{	
 			enum Enum
 		{
@@ -37,12 +37,12 @@ public:
 		};
 	};
 
-	PurseColor::Enum & getColor() const;
+	purseColor::Enum  getColor() const;
 	const std::string & getBrandOfPurse() const;
-	const double & getWeightOfPurse() const;
-	const int & getAmountOfPurse() const;
+	double getWeightOfPurse() const;
+	int getAmountOfPurse() const;
 
-	Purse(const std::string & _brandOfPurse, PurseColor::Enum _purseColor, double _weightOfPurse, int _amountOfPurse);
+	Purse(const std::string & _brandOfPurse, purseColor::Enum _purseColor, double _weightOfPurse, int _amountOfPurse);
 
 	Purse(const Purse & _purse) = delete; // prohibit call of the copy constructor using "delete" operator.
 
@@ -54,11 +54,11 @@ public:
 
 	void addThing(const std::string & _nameOfThing, double _Weight);
 
-	const PurseItem getThing(const std::string & _nameOfThing);
+	PurseItem getThing(const std::string & _nameOfThing);
 
-	double getWeighOfThing(const std::string & _nameOfThing);
+	double getThingWeight(const std::string & _nameOfThing);
 
-	bool hasItem(const std::string & _nameOfThing);
+	bool hasItem(const std::string & _nameOfThing) const;
 
 
 
@@ -67,32 +67,32 @@ private:
 
 	std::string brandOfPurse;
 
-	PurseColor::Enum purseColor;
+	purseColor::Enum purseColor;
 
 	double weightOfPurse;
 
 	int amountOfPurse;
 
-	std::unordered_map< std::string, int > mapOfItems;
+	std::unordered_map< std::string, double > mapOfItems;
 
 
 
 };
 
 
-inline const int & getAmountOfPurse() 
+inline int Purse::getAmountOfPurse() const
 {
 	return amountOfPurse;
 }
 
-inline const double & getWeightOfPurse()
+inline double Purse::getWeightOfPurse() const
 {
 	return weightOfPurse;
 }
 
-inline const Purse::PurseColor::Enum getColor() 
+inline Purse::purseColor::Enum Purse::getColor() const
 {
-	return PurseColor;
+	return purseColor;
 
 }
 
