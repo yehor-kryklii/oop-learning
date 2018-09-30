@@ -160,7 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="purse.cpp" />
-    <ClCompile Include="purse_test.cpp" />
+    <ClCompile Include="test_programm.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

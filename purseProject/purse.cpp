@@ -7,12 +7,12 @@
 
 Purse::Purse(
 		const std::string & _brandOfPurse, 
-		purseColor::Enum _purseColor, 
+		PurseColor::Enum _purseColor, 
 		double _weightOfPurse, 
 		int _amountOfPurse
 )
 	: brandOfPurse(_brandOfPurse),
-	purseColor(_purseColor),
+	PurseColor(_purseColor),
 	weightOfPurse(_weightOfPurse),
 	amountOfPurse(_amountOfPurse)
 

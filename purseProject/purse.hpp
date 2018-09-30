@@ -25,7 +25,7 @@ public:
 		double weightOfThing;
 	};
 
-	struct purseColor
+	struct PurseColor
 	{	
 			enum Enum
 		{
@@ -37,12 +37,17 @@ public:
 		};
 	};
 
-	purseColor::Enum  getColor() const;
+	PurseColor::Enum  getColor() const;
 	const std::string & getBrandOfPurse() const;
 	double getWeightOfPurse() const;
 	int getAmountOfPurse() const;
 
-	Purse(const std::string & _brandOfPurse, purseColor::Enum _purseColor, double _weightOfPurse, int _amountOfPurse);
+	Purse(
+			const std::string & _brandOfPurse
+		,	PurseColor::Enum _purseColor
+		,	double _weightOfPurse
+		,	int _amountOfPurse
+	);
 
 	Purse(const Purse & _purse) = delete; // prohibit call of the copy constructor using "delete" operator.
 
@@ -56,18 +61,26 @@ public:
 
 	PurseItem getThing(const std::string & _nameOfThing);
 
-	double getThingWeight(const std::string & _nameOfThing);
+	double getThingWeight(const std::string & _nameOfThing) const;
 
 	bool hasItem(const std::string & _nameOfThing) const;
 
+	//TO DO
 
+	std::string const & getAllThings() const;
+
+	double getCurrentWeight() const;
+
+	int getCurrrentLoad() const;
+
+	int getTotalItemsCount() const;
 
 
 private:
 
 	std::string brandOfPurse;
 
-	purseColor::Enum purseColor;
+	PurseColor::Enum PurseColor;
 
 	double weightOfPurse;
 
@@ -90,9 +103,9 @@ inline double Purse::getWeightOfPurse() const
 	return weightOfPurse;
 }
 
-inline Purse::purseColor::Enum Purse::getColor() const
+inline Purse::PurseColor::Enum Purse::getColor() const
 {
-	return purseColor;
+	return PurseColor;
 
 }
 
