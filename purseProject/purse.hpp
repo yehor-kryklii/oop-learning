@@ -14,20 +14,20 @@
 class Purse
 {
 
-/*-----------------------------------------------------------------*/
+	/*-----------------------------------------------------------------*/
 
 public:
 
 	struct PurseItem
 	{
-		const std::string nameOfThing;
+		std::string nameOfThing;
 
 		double weightOfThing;
 	};
 
 	struct PurseColor
-	{	
-			enum Enum
+	{
+		enum Enum
 		{
 			Green,
 			Red,
@@ -43,19 +43,19 @@ public:
 	int getAmountOfPurse() const;
 
 	Purse(
-			const std::string & _brandOfPurse
-		,	PurseColor::Enum _purseColor
-		,	double _weightOfPurse
-		,	int _amountOfPurse
+		const std::string & _brandOfPurse
+		, PurseColor::Enum _purseColor
+		, int _amountOfPurse
+		, double _weightOfPurse
 	);
 
 	Purse(const Purse & _purse) = delete; // prohibit call of the copy constructor using "delete" operator.
 
 	Purse& operator = (const Purse & _purse) = delete; // remote assignment operator.
 
-	Purse(Purse && _purse); 
+	Purse(Purse && _purse);
 
-	Purse & operator = (Purse && _purse); 
+	Purse & operator = (Purse && _purse);
 
 	void addThing(const std::string & _nameOfThing, double _Weight);
 
@@ -73,9 +73,6 @@ public:
 
 	int getCurrrentLoad() const;
 
-	int getTotalItemsCount() const;
-
-
 private:
 
 	std::string brandOfPurse;
@@ -87,8 +84,6 @@ private:
 	int amountOfPurse;
 
 	std::unordered_map< std::string, double > mapOfItems;
-
-
 
 };
 

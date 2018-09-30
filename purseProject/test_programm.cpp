@@ -24,19 +24,6 @@ DECLARE_OOP_TEST ( test_Purse_Constructor )
 
 /*****************************************************************************/
 
-DECLARE_OOP_TEST ( test_Purse_Constructor )
-{
-	Purse p("Gucci", Purse::PurseColor::Red, 5, 7.2);
-	
-	assert( p.getBrandOfPurse() == "Gucci" );
-	assert( p.getAmountOfPurse() == 5 );
-	assert( p.getTotalItemsCount() == 0 );
-
-}
-
-
-/*****************************************************************************/
-
 
 DECLARE_OOP_TEST ( test_Purse_Constructor_EmptyName )
 {
@@ -54,17 +41,17 @@ DECLARE_OOP_TEST ( test_Purse_Constructor_BadItemsCount_and_Weight )
 {
 	ASSERT_THROWS(
             Purse ( "Gucci", Purse::PurseColor::Red, 0, 7.2 )
-		,	Messages::NonPositiveItemsCount
+		,	Messages::NonPoitiveAmount
 	);
 
 	ASSERT_THROWS(
             Purse ( "Gucci", Purse::PurseColor::Red, -1, 7.2 )
-		,	Messages::NonPositiveItemsCount
+		,	Messages::NonPoitiveAmount
 	);
     
     ASSERT_THROWS(
             Purse ( "Gucci", Purse::PurseColor::Red, 1, -1 )
-		,	Messages::NonPositiveItemsWeight
+		,	Messages::NonPositiveWeightPurse
 	);
 }
 
@@ -96,7 +83,7 @@ DECLARE_OOP_TEST ( test_Purse_add_item )
 /*****************************************************************************/
 
 
-DECLARE_OOP_TEST ( test_Purse_add_item )
+DECLARE_OOP_TEST ( test_Purse_add_item_empty_space )
 {
 	Purse p( "Gucci", Purse::PurseColor::Red, 1, 7.2 );
 
@@ -119,7 +106,7 @@ DECLARE_OOP_TEST ( test_Purse_add_item_empty_name )
     
     ASSERT_THROWS(
             p.addThing( "", 0.1 )
-		,	Messages::NonPositiveItemsWeight
+		,	Messages::EmptyItemName
 	);
 }
 

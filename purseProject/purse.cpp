@@ -8,8 +8,8 @@
 Purse::Purse(
 		const std::string & _brandOfPurse, 
 		PurseColor::Enum _purseColor, 
-		double _weightOfPurse, 
-		int _amountOfPurse
+		int _amountOfPurse,
+		double _weightOfPurse 
 )
 	: brandOfPurse(_brandOfPurse),
 	PurseColor(_purseColor),
@@ -29,37 +29,28 @@ Purse::Purse(
 
 }
 
+
+/*****************************************************************************/
+
+
 bool Purse::hasItem(const std::string & _nameOfThing) const // make this method const because found an example where such function is const; need to ask you why)
 {
 	if (_nameOfThing.empty())
 		throw(std::logic_error(Messages::EmptyItemName));
 
-	if (mapOfItems.count(_nameOfThing) == 0)
-		return false;
-		
-	else
-
-		return true;
+	return mapOfItems.count(_nameOfThing) > 0;
 }
 
-double Purse::getThingWeight(const std::string & _nameOfThing)
+double Purse::getThingWeight(const std::string & _nameOfThing) const
 {
 	if (_nameOfThing.empty())
 		throw(std::logic_error(Messages::EmptyItemName));
 
 	if (!hasItem(_nameOfThing))
 		throw(std::logic_error(Messages::NoSuchItemInPurse));
-
-	mapOfItems.at(_nameOfThing);
-	return mapOfItems(); //Don't know how realise
-
-
-
-
-
-
+	
+	return mapOfItems.at(_nameOfThing);
 }
-
 
 
 /*****************************************************************************/
