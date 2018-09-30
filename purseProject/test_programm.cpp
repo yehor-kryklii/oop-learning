@@ -16,7 +16,7 @@ DECLARE_OOP_TEST ( test_Purse_Constructor )
 	
 	assert( p.getBrandOfPurse() == "Gucci" );
 	assert( p.getAmountOfPurse() == 5 );
-	assert( p.getTotalItemsCount() == 0 );
+	assert( p.getCurrrentLoad() == 0 );
     assert( p.getWeightOfPurse() == 7.2 );
     assert( p.getColor() == Purse::PurseColor::Red );
 }
