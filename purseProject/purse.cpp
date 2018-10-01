@@ -54,3 +54,27 @@ double Purse::getThingWeight(const std::string & _nameOfThing) const
 
 
 /*****************************************************************************/
+
+void Purse::addThing(const std::string & _nameOfThing, double _Weight)
+{
+	if (_nameOfThing.empty())
+		throw(std::logic_error(Messages::EmptyItemName));
+
+	if (_Weight <= 0)
+		throw(std::logic_error(Messages::NotEnoughWeightForItem));
+
+	mapOfItems.emplace(_nameOfThing, _Weight);
+}
+
+/*****************************************************************************/
+
+ Purse::PurseItem getThing (const std::string _nameOfThing) // does't work, don't know why
+{
+	 if (_nameOfThing.empty)
+		 throw(std::logic_error(Messages::NoSuchItemInPurse));
+
+	 Purse::PurseItem i;
+	 i.nameOfThing = _nameOfThing;
+	 i.weightOfThing = getThingWeight(_nameOfThing);
+	 mapOfItems.erase(_nameOfThing); 
+}
