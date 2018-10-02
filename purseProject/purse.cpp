@@ -68,7 +68,7 @@ void Purse::addThing(const std::string & _nameOfThing, double _Weight)
 
 /*****************************************************************************/
 
- Purse::PurseItem getThing (const std::string _nameOfThing) // does't work, don't know why
+ Purse::PurseItem Purse::getThing (const std::string & _nameOfThing) 
 {
 	 if (_nameOfThing.empty)
 		 throw(std::logic_error(Messages::NoSuchItemInPurse));
