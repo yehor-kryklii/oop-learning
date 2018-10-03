@@ -78,3 +78,22 @@ void Purse::addThing(const std::string & _nameOfThing, double _Weight)
 	 i.weightOfThing = getThingWeight(_nameOfThing);
 	 mapOfItems.erase(_nameOfThing); 
 }
+
+
+
+ const std::string & Purse::getAllThings() const
+ {
+	 return brandOfPurse;
+ }
+ 
+
+ double Purse::getCurrentWeight() const
+ {
+	 return 0,0;
+ }
+
+ int Purse::getCurrrentLoad() const
+ {
+	 return 0;
+ }
+ 

@@ -53,9 +53,9 @@ public:
 
 	Purse& operator = (const Purse & _purse) = delete; // remote assignment operator.
 
-	Purse(Purse && _purse);
+	Purse(Purse && _purse) {}
 
-	Purse & operator = (Purse && _purse);
+	Purse & operator = (Purse && _purse) {}
 
 	void addThing(const std::string & _nameOfThing, double _Weight);
 
@@ -65,9 +65,9 @@ public:
 
 	bool hasItem(const std::string & _nameOfThing) const;
 
-	//TO DO
+	
 
-	std::string const & getAllThings() const;
+	const std::string  & getAllThings() const;
 
 	double getCurrentWeight() const;
 
