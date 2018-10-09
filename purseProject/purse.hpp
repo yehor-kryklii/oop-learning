@@ -18,12 +18,18 @@ class Purse
 
 public:
 
+	/*****************************************************************************/
+
+
 	struct PurseItem
 	{
 		std::string nameOfThing;
 
 		double weightOfThing;
 	};
+
+	/*****************************************************************************/
+
 
 	struct PurseColor
 	{
@@ -37,9 +43,15 @@ public:
 		};
 	};
 
+	/*****************************************************************************/
+
+
 	PurseColor::Enum  getColor() const;
+
 	const std::string & getBrandOfPurse() const;
+
 	double getWeightOfPurse() const;
+
 	int getAmountOfPurse() const;
 
 	Purse(
@@ -53,9 +65,9 @@ public:
 
 	Purse& operator = (const Purse & _purse) = delete; // remote assignment operator.
 
-	Purse(Purse && _purse) {}
+	Purse(Purse && _purse);
 
-	Purse & operator = (Purse && _purse) {}
+	Purse & operator = (Purse && _purse);
 
 	void addThing(const std::string & _nameOfThing, double _Weight);
 
@@ -67,7 +79,7 @@ public:
 
 	
 
-	const std::string  & getAllThings() const;
+	std::string getAllThings() const;
 
 	double getCurrentWeight() const;
 

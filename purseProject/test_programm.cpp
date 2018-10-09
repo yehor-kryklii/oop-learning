@@ -136,6 +136,8 @@ DECLARE_OOP_TEST ( test_query_item )
     
     Purse::PurseItem temp = p.getThing( "Lipstic" ); 
     
+	bool hasItem = p.hasItem("Lipstic");
+
 	assert( ! p.hasItem( "Lipstic" ) );
 }
 
@@ -222,9 +224,8 @@ DECLARE_OOP_TEST ( test_get_all_items )
     p.addThing( "Lipstick", 0.1 );
     p.addThing( "Pen", 0.3 );
     
-    std::string allItems = p.getAllThings();
-    
-    assert( "Lipstick Pen" );
+	std::string s = p.getAllThings();
+	assert(s == "Lipstick Pen ");
 }
 
 

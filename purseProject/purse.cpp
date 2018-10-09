@@ -57,11 +57,14 @@ double Purse::getThingWeight(const std::string & _nameOfThing) const
 
 void Purse::addThing(const std::string & _nameOfThing, double _Weight)
 {
+	if (getCurrrentLoad() + _Weight > amountOfPurse)
+		throw(std::logic_error(Messages::NoSpaceInPurse));
+
 	if (_nameOfThing.empty())
 		throw(std::logic_error(Messages::EmptyItemName));
 
 	if (_Weight <= 0)
-		throw(std::logic_error(Messages::NotEnoughWeightForItem));
+		throw(std::logic_error(Messages::NonPositiveItemsWeight));
 
 	mapOfItems.emplace(_nameOfThing, _Weight);
 }
@@ -70,30 +73,87 @@ void Purse::addThing(const std::string & _nameOfThing, double _Weight)
 
  Purse::PurseItem Purse::getThing (const std::string & _nameOfThing) 
 {
-	 if (_nameOfThing.empty)
+	 if (_nameOfThing.empty())
+		 throw(std::logic_error(Messages::EmptyItemName));
+
+	 if (!hasItem(_nameOfThing))
 		 throw(std::logic_error(Messages::NoSuchItemInPurse));
 
 	 Purse::PurseItem i;
 	 i.nameOfThing = _nameOfThing;
-	 i.weightOfThing = getThingWeight(_nameOfThing);
+	 i.weightOfThing = mapOfItems.at(_nameOfThing);
 	 mapOfItems.erase(_nameOfThing); 
+
+	 return i;
 }
 
+ /*****************************************************************************/
 
 
- const std::string & Purse::getAllThings() const
+ std::string  Purse::getAllThings() const
  {
-	 return brandOfPurse;
+
+	 std::string total;
+
+	 for (auto element : mapOfItems)
+		 total += (element.first + " ");
+
+	 return total;
+
  }
- 
+
+ /*****************************************************************************/
+
 
  double Purse::getCurrentWeight() const
  {
-	 return 0,0;
+	 double total = 0;
+
+	 for (auto element : mapOfItems)
+		 total += element.second;
+
+	 return total;  // need to sum up .second
  }
+
+ /*****************************************************************************/
+
 
  int Purse::getCurrrentLoad() const
  {
-	 return 0;
+	 return mapOfItems.size(); // size returns the number of elements in the map container.
  }
+
+ /*****************************************************************************/
+
+ Purse::Purse(Purse && _purse)
+	 : brandOfPurse(_purse.brandOfPurse),
+	 PurseColor(_purse.PurseColor),
+	 weightOfPurse(_purse.weightOfPurse),
+	 amountOfPurse(_purse.amountOfPurse)
+
+ {
+
+	 std::swap(mapOfItems, _purse.mapOfItems);
+
+ }
+
+ /*****************************************************************************/
+
+
+ Purse & Purse::operator = (Purse && _purse)
+ {
+
+	 if (&_purse == this)
+		 return *this;
+
+	 std::swap(brandOfPurse, _purse.brandOfPurse);
+	 std::swap(PurseColor, _purse.PurseColor);
+	 std::swap(weightOfPurse, _purse.weightOfPurse);
+	 std::swap(amountOfPurse, _purse.amountOfPurse);
+
+ }
+
+ /*****************************************************************************/
+
+
  
