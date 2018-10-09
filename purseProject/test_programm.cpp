@@ -134,9 +134,11 @@ DECLARE_OOP_TEST ( test_query_item )
 
     p.addThing( "Lipstic", 0.1 );
     
-    p.getThing( "Lipstic" ); 
+    Purse::PurseItem temp = p.getThing( "Lipstic" ); 
     
-	assert( ! p.hasItem( "Lipstick" ) );
+	bool hasItem = p.hasItem("Lipstic");
+
+	assert( ! p.hasItem( "Lipstic" ) );
 }
 
 
@@ -151,7 +153,7 @@ DECLARE_OOP_TEST ( test_query_item_non_existant_name )
     p.addThing( "Gucci", 0.1 );
      
     ASSERT_THROWS(      
-            p.getThing( "Lipstic" )
+            Purse::PurseItem temp = p.getThing( "Lipstic" )
         ,   Messages::NoSuchItemInPurse
     ); 
 }
@@ -163,13 +165,13 @@ DECLARE_OOP_TEST ( test_query_item_non_existant_name )
 
 DECLARE_OOP_TEST ( test_get_item_weight )
 {
-	Purse p( "Gucci", Purse::PurseColor::Red, 5, 7.2 );
+    Purse p( "Gucci", Purse::PurseColor::Red, 5, 7.2 );
 
     p.addThing( "Lipstic", 0.1 );
     
-    p.getThing( "Lipstic" ); 
+    Purse::PurseItem temp = p.getThing( "Lipstic" ); 
     
-	assert( ! p.hasItem( "Lipstick" ) );
+    assert( ! p.hasItem( "Lipstick" ) );
 }
 
 
@@ -179,7 +181,7 @@ DECLARE_OOP_TEST ( test_get_item_weight )
 
 DECLARE_OOP_TEST ( test_get_item_weight__non_existant_name )
 {
-	Purse p( "Gucci", Purse::PurseColor::Red, 5, 7.2 );
+    Purse p( "Gucci", Purse::PurseColor::Red, 5, 7.2 );
 
     p.addThing( "Gucci", 0.1 );
      
@@ -195,21 +197,20 @@ DECLARE_OOP_TEST ( test_get_item_weight__non_existant_name )
 
 DECLARE_OOP_TEST ( test_get_purse_weight_and_load )
 {
-	Purse p( "Gucci", Purse::PurseColor::Red, 5, 7.2 );
+    Purse p( "Gucci", Purse::PurseColor::Red, 5, 7.2 );
 
-    p.addThing( "Lipstic", 0.1 );
+    p.addThing( "Lipstick", 0.1 );
     p.addThing( "Pen", 0.3 );
     
-    p.getThing( "Lipstic" ); 
+    Purse::PurseItem temp = p.getThing( "Lipstick" ); 
     
-	assert( p.hasItem( "Lipstick" ) );
+    assert( !p.hasItem( "Lipstick" ) );
     assert( p.hasItem( "Pen" ) );
     
-    assert( p.getThingWeight( "Lipstick" ) == 0.1 );
     assert( p.getThingWeight( "Pen" ) == 0.3 );
     
-    assert( p.getCurrentWeight() == 0.4 );
-    assert( p.getCurrrentLoad() == 2 );
+    assert( p.getCurrentWeight() == 0.3 );
+    assert( p.getCurrrentLoad() == 1 );
 }
 
 
@@ -220,12 +221,11 @@ DECLARE_OOP_TEST ( test_get_all_items )
 {
 	Purse p( "Gucci", Purse::PurseColor::Red, 5, 7.2 );
 
-    p.addThing( "Lipstic", 0.1 );
+    p.addThing( "Lipstick", 0.1 );
     p.addThing( "Pen", 0.3 );
     
-    std::string allItems = p.getAllThings();
-    
-    assert( "Lipstic Pen" );
+	std::string s = p.getAllThings();
+	assert(s == "Lipstick Pen ");
 }
 
 
