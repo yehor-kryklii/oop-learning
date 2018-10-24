@@ -1,0 +1,6 @@
+﻿  test_programm.cpp
+  purse.cpp
+  Generating Code...
+d:\repositories\oop-learning\purseproject\purse.cpp(154): warning C4715: 'Purse::operator=': not all control paths return a value
+  b03_purse.vcxproj -> D:\REPOSITORIES\oop-learning\purseProject\Debug\b03_purse.exe
+  b03_purse.vcxproj -> D:\REPOSITORIES\oop-learning\purseProject\Debug\b03_purse.pdb (Full PDB)
