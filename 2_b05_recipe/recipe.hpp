@@ -34,6 +34,26 @@ public:
 		, const std::string & _author
 	);
 
+	Recipe(const Recipe & _recipe) = delete;
+
+	Recipe& operator = (const Recipe & _resipe);
+
+	bool hasIngredient(const std::string & _nameOfIngredient) const;
+
+	void addIngredient(const std::string & _nameOfIngredient, int _weightOfIngredient);
+
+	void modifyIngredient(const std::string & _nameOfIngredient, int _weightOfIngredient);
+
+	int getIngredientValue(const std::string & _nameOfIngredient) const;
+
+	int getCookStepsCount() const;
+
+	int getCookStep() const;
+
+	void addCookStep(std::string & _cookStep);
+
+
+
 /*-----------------------------------------------------------------*/
 
 private:
@@ -43,6 +63,8 @@ private:
 	std::string descriptionOfRecipe;
 
 	std::string authorOfRecipe;
+
+
 
 /*-----------------------------------------------------------------*/
 
