@@ -6,8 +6,10 @@
 /*****************************************************************************/
 
 #include <string>
+#include <unordered_map>
 
 /*****************************************************************************/
+
 
 
 class Recipe
@@ -18,6 +20,8 @@ class Recipe
 public:
 
 /*-----------------------------------------------------------------*/
+
+
 	const std::string & getName() const;
 
 	const std::string & getDescription() const;
@@ -30,13 +34,16 @@ public:
 
 	Recipe(
 		const std::string & _name
-		, const std::string & _description
-		, const std::string & _author
-	);
+	,	const std::string & _description
+	,	const std::string & _author
+);
+
+
+	
 
 	Recipe(const Recipe & _recipe) = delete;
 
-	Recipe& operator = (const Recipe & _resipe);
+	Recipe& operator = (const Recipe & _resipe) = delete;
 
 	bool hasIngredient(const std::string & _nameOfIngredient) const;
 
@@ -52,6 +59,10 @@ public:
 
 	void addCookStep(std::string & _cookStep);
 
+	std::pair<std::string, int> beginIngredients;
+
+	std::pair<std::string, int> endIngredients;
+
 
 
 /*-----------------------------------------------------------------*/
@@ -63,6 +74,10 @@ private:
 	std::string descriptionOfRecipe;
 
 	std::string authorOfRecipe;
+	
+	int ingredientCount;
+
+	std::unordered_map<std::string, int> mapOfIngredients;
 
 
 
@@ -89,6 +104,11 @@ inline const std::string & Recipe::getDescription() const
 inline const std::string & Recipe::getAuthor() const
 {
 	return authorOfRecipe;
+}
+
+inline int getIngredientCount() 
+{
+	return ingredientCount;
 }
 
 /*****************************************************************************/
